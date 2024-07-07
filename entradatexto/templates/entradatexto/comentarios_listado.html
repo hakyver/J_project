@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="dataTables-comentarios" class="table">
+                    <thead>
+                        <tr>
+                            <th class="centered">Titulo</th>
+                            <th class="centered">User</th>
+                            <th class="centered">Email</th>
+                            <th class="centered">Edad</th>
+                            <th class="centered">Comentario</th>
+                            <th class="centered">Fecha</th>
+                            <th class="centered">Calificacion</th>
+                            <th class="centered">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebody_comentarios">
+                        {% for form in formularios %}
+                        <tr>
+                            <td class="centered">{{ form.titulo }}</td>
+                            <td class="centered">{{ form.user }}</td>
+                            <td class="centered">{{ form.Email }}</td>
+                            <td class="centered">{{ form.Edad }}</td>
+                            <td class="centered">{{ form.Comentario }}</td>
+                            <td class="centered">{{ form.Fecha }}</td>
+                            <td class="centered">{{ form.Calificacion }}</td>
+                            <td class="centered">
+                                <!-- Update Button -->
+                                <a href="{% url 'commentupdate' form.id %}" class="btn btn-primary">Update</a>
+
+                                <!-- Delete Button -->
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ form.id }}">Delete</button>
+
+                                <!-- Modulo de confirmación de eliminación -->
+                                <div class="modal fade" id="deleteModal{{ form.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ form.id }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel{{ form.id }}">Confirmar eliminación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Seguro que deseas eliminar este comentario?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="{% url 'deletecomment' form.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    <button type="submit" name="borrar" value="Si, eliminar" class="btn btn-danger">Sí, eliminar</button>
+                                                    <button type="submit" name="borrar" value="No, cancelar" class="btn btn-secondary" data-bs-dismiss="modal">No, cancelar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 justify-content-center mt-4">
+            <h1 class="text-center">Inicia Sesión</h1>
+            <form method="post" class="card card-body text center">
+                {% csrf_token %}
+                {{ form }}
+                {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6 text-center">
+            <h2>¿No tienes una cuenta?</h2>
+            <p>Crea una cuenta gratuita y disfruta de lo mejor del cloud computing.</p>
+            <a href="{% url 'index' %}" class="btn btn-primary">Crear cuenta</a>
+        </div>
+    </div>
+    <div class="mb-3">
+        <input type="password" class="form-control" placeholder="placeholder">
+    </div>
+</main>
+{% endblock %}

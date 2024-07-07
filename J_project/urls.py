@@ -19,4 +19,8 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('entrada/', include('entradatexto.urls')),]
+    path('', include('entradatexto.urls')),]
+#entrada aqui es la ruta principal que te dirije a la aplicacion y lo que sigue son las rutas que salen de ella
+#para que sirve el include?
+#para incluir las rutas que se encuentran el el archivo urls de la app indicada
+#para que sirve el admin? R= para la pagina de administrador que te proporciona django

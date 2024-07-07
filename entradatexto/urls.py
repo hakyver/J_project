@@ -1,12 +1,21 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.index,name='indice'),
-     path('1',views.comentariosview,name='comentariosvista'),
-    path('2',views.listacomentarios,name='listacomentarios'),
-
+    path('', views.index, name='index'),
+    path('login/', views.loginView, name='login'),
+    path('logout/', views.LogoutView, name='logout'),
+    path('search/', views.searchView, name='search'),
+    path('user_profile/<int:user>/', views.user_profile, name='user_profile'),
+    path('home/', views.home, name='home'),
+    path('crearcomentario/', views.crearcomentario, name='crearcomentario'),
+    path('listacomentarios/', views.listacomentarios, name='listacomentarios'),
+    path('commentupdate/<int:id>/', views.commentupdate, name='commentupdate'),
+    path('deletecomment/<int:id>/', views.deletecomment, name='deletecomment'),
+    path('configuraciones/', views.configuraciones, name='configuraciones'),
 ]
+
+
 
 
 

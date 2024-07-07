@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <!-- Bienvenida -->
+     <main>
+    <div class="row mt-3 card card-body">
+        <div class="col">
+            <h1 class="text-center">¡Bienvenido a Mi Página Web!</h1>
+            <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt recusandae, quia, eum adipisci commodi ipsa aliquid neque facere natus expedita quisquam cupiditate. Nulla tempora delectus doloremque tenetur perspiciatis quia dolorem.</p>
+        </div>
+    </div>
+
+    <!-- Videos -->
+    <div class="row mt-3">
+        <div class="col-md-6 card card-body">
+            <h2 class="mb-3 text-center">Videos</h2>
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <h3 class="text-center">Bases de Cloud Computing</h3>
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/VRPxao3e_jY" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="carousel-item">
+                        <h3>Cloud Computing en AWS</h3>
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/qw2LU1yS7aw" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="carousel-item">
+                        <h3>Base de Datos en AWS</h3>
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/5abamRO41fE" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Calificación y sugerencias -->
+        <div class="col-md-6 mt-3 mt-md-0 card card-body ">
+            <div class="row">
+                <a class="primary">{{error}}</a>
+                <h1> Signup Page</h1>
+                <form method="POST">
+                {% csrf_token %}
+                {{ form}}
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </main>
+   
+</body>
+{% endblock %}
